@@ -33,7 +33,7 @@ public class ProductDbConfig {
     private Environment env;
 
     @Bean
-    @ConfigurationProperties(prefix="datasource.product")
+    @ConfigurationProperties(prefix="datasource.home")
     public DataSourceProperties productDataSourceProperties()
     {
 
@@ -69,7 +69,8 @@ public class ProductDbConfig {
         factoryBean.setPackagesToScan("ru.zhukov.tradeunion");
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         Properties jpaProperties = new Properties();
-        jpaProperties.put("hibernate.show-sql", env.getProperty("hibernate.show-sql"));
+       // jpaProperties.put("hibernate.show-sql", env.getProperty("hibernate.show-sql"));
+        jpaProperties.put("hibernate.show-sql", true);
         factoryBean.setJpaProperties(jpaProperties);
 
         return factoryBean;
