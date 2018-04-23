@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Профсоюзный комитет группы предприятий ГОТЭК</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/libs/oj/v5.0.0/alta/oj-alta-min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/demo-alta-site-min.css" type="text/css"/>
+</head>
+<body class="oj-web-applayout-body">
+
+
+<div id="globalBody" class="oj-offcanvas-outer-wrapper oj-offcanvas-page">
+    <div id="navDrawer" role="navigation" class="oj-contrast-marker oj-web-applayout-offcanvas oj-offcanvas-start">
+
+    </div>
+    <div id="pageContent" class="oj-web-applayout-page">
+        <header role="banner" class="oj-web-applayout-header">
+            <div class="oj-web-applayout-max-width oj-flex-bar oj-sm-align-items-center">
+                <!-- Offcanvas toggle button -->
+                <div class="oj-flex-bar-start oj-md-hide">
+                    <oj-button id="drawerToggleButton" class="oj-button-lg" on-oj-action="[[toggleDrawer]]" chroming="half" display="icons">
+                        <span slot="startIcon" class="oj-web-applayout-offcanvas-icon"></span>
+                        <span>Application Navigation</span>
+                    </oj-button>
+                </div>
+                <div class="oj-flex-bar-start oj-sm-align-items-baseline">
+                      <span role="img" class="oj-icon demo-oracle-icon" title="Oracle Logo" alt="Oracle Logo"></span>
+                    <h1 class="oj-sm-only-hide oj-web-applayout-header-title" title="Application Name">Hello</oj-bind-text></h1>
+                </div>
+                <div class="oj-flex-bar-end">
+                    <!-- Responsive Toolbar -->
+                    <oj-toolbar>
+                        <oj-menu-button id="userMenu" display="[[smScreen() ? 'icons' : 'all']]" chroming="half">
+                            <span><oj-bind-text value="[[userLogin]]"></oj-bind-text></span>
+                            <span slot="endIcon" :class="[[{'oj-icon demo-appheader-avatar': smScreen(), 'oj-component-icon oj-button-menu-dropdown-icon': !smScreen()}]]"></span>
+                            <oj-menu id="menu1" slot="menu" style="display:none">
+                                <oj-option id="pref" value="pref">Preferences</oj-option>
+                                <oj-option id="help" value="help">Help</oj-option>
+                                <oj-option id="about" value="about">About</oj-option>
+                                <oj-option id="out" value="out">Sign Out</oj-option>
+                            </oj-menu>
+                        </oj-menu-button>
+                    </oj-toolbar>
+                </div>
+            </div>
+            <div role="navigation" class="oj-web-applayout-max-width oj-web-applayout-navbar">
+
+            </div>
+        </header>
+
+    </div>
+</div>
+
+
+<script type="text/javascript" src="js/libs/require/require.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>
