@@ -33,25 +33,24 @@ public class ProductDbConfig {
     private Environment env;
 
     @Bean
-    @ConfigurationProperties(prefix="datasource.home")
+    @ConfigurationProperties(prefix="datasource.product")
     public DataSourceProperties productDataSourceProperties()
     {
-
         DataSourceProperties dataSourceProperties = new DataSourceProperties();
-        if(System.getenv("COMPUTERNAME").toUpperCase().equals("desktop-GBBOAS1".toUpperCase())){
-            dataSourceProperties.setUrl("jdbc:sqlserver://desktop-GBBOAS1;databaseName=ait_all;applicationName=TradeUnion");
-        }
         return dataSourceProperties;
     }
 
     @Bean
     public DataSource productDataSource(){
-        DataSourceProperties sourceProperties = productDataSourceProperties();
+        DataSourceProperties dataSourceProperties = productDataSourceProperties();
+        if(System.getenv("COMPUTERNAME").toUpperCase().equals("desktop-GBBOAS1".toUpperCase())){
+            dataSourceProperties.setUrl("jdbc:sqlserver://desktop-GBBOAS1;databaseName=ait_all;applicationName=TradeUnion");
+        }
         return DataSourceBuilder.create()
-                         .driverClassName(sourceProperties.getDriverClassName())
-                         .url(sourceProperties.getUrl())
-                         .username(sourceProperties.getUsername())
-                         .password(sourceProperties.getPassword())
+                         .driverClassName(dataSourceProperties.getDriverClassName())
+                         .url(dataSourceProperties.getUrl())
+                         .username(dataSourceProperties.getUsername())
+                         .password(dataSourceProperties.getPassword())
                          .build();
     }
 
