@@ -2,7 +2,7 @@ package ru.zhukov.tradeunion.member;
 
 import javax.persistence.Entity;
 
-@Entity
+
 public class Member {
     private String id;
     private String enterprise;
