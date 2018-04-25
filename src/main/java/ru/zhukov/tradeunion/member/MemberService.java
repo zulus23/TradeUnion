@@ -1,4 +1,9 @@
 package ru.zhukov.tradeunion.member;
 
-public class MemberService {
+import java.util.Optional;
+
+public interface MemberService {
+
+    Optional<Member> findMember(String value); //поиск по ...???
+
 }
