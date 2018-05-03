@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
+import javax.annotation.Resource;
+
 @Configuration
 @EnableWebSecurity
 
@@ -23,7 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
 
-    @Autowired
+    @Resource(name = "userService")
     private UserDetailsService myUserDetailService;
 
     @Override
@@ -40,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                   .permitAll()
                 .antMatchers("/").permitAll()
 
-                .antMatchers("/oauth/authorize").permitAll()
+                .antMatchers("/oauth/token").permitAll()
                 .and()
                  .authorizeRequests()
                 .anyRequest().authenticated();
@@ -52,14 +54,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
               // .fullyAuthenticated().and().formLogin();//.loginPage("/login")
                //.failureUrl("/login?error").permitAll().and().logout().permitAll();
     }
-    @Autowired
+   /* @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .inMemoryAuthentication()
                 .withUser("user")
                  .roles("USER")
                 .password("{noop}password");
-    }
+    }*/
 
     @Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {

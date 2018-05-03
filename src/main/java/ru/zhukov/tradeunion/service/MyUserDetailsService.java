@@ -6,20 +6,17 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-@Service
-
+@Service(value = "userService")
 public class MyUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
 
         System.out.println("111");
         UserDetails user =
-                User.withDefaultPasswordEncoder()
-                        .username("user")
-                        .password("password")
+                    User.withUsername("user")
+                        .password("{noop}password")
                         .roles("USER")
                         .build();
-
         return user;
     }
 }
