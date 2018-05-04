@@ -17,7 +17,7 @@ import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 @EnableAuthorizationServer
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
     static final String CLIEN_ID = "tradeunion_client";
-    //static final String CLIENT_SECRET = "$2a$04$e/c1/RfsWuThaWFCrcCuJeoyvwCV0URN/6Pn9ZFlrtIWaU/vj/BfG";
+    //static final String CLIENT_SECRET = "$2a$10$vdFFrZOV3y3ul9VXuk9P6OfiVcOkspUzM0pz/.G69M6IwsDmL//u6";
     static final String CLIENT_SECRET = "{noop}password";
     static final String GRANT_TYPE_PASSWORD = "password";
     static final String AUTHORIZATION_CODE = "authorization_code";

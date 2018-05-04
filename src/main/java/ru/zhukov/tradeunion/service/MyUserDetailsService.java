@@ -14,7 +14,7 @@ public class MyUserDetailsService implements UserDetailsService {
         System.out.println("111");
         UserDetails user =
                     User.withUsername("user")
-                        .password("{noop}password")
+                        .password("$2a$10$vdFFrZOV3y3ul9VXuk9P6OfiVcOkspUzM0pz/.G69M6IwsDmL//u6")
                         .roles("USER")
                         .build();
         return user;

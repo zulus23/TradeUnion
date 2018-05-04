@@ -9,12 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Gtk_TU_ViewMembers")
+@Table(name = "Gtk_Pf_ViewMembers")
 
 @Data
 @EqualsAndHashCode(of = {"id"})
 public class Member {
     @Id
+    @Column(name = "pers_id")
     private String id;
     @Column(name = "DbName")
     private String enterprise;

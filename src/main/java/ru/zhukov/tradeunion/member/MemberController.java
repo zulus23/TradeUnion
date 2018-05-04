@@ -15,9 +15,9 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
-    @RequestMapping(value = "/{enterprise}/members/")
-    public List<Member> listMembers(@PathVariable String enterprise){
-        return memberService.listMembersByEnterprise(enterprise);
+    @RequestMapping(value = "/members/")
+    public List<Member> listMembers(String enterprise){
+        return memberService.listMembersByEnterprise("Готэк");
     }
 
 

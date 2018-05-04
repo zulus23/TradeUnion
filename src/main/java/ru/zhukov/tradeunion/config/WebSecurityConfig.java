@@ -9,11 +9,8 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
 import javax.annotation.Resource;
 
@@ -22,7 +19,6 @@ import javax.annotation.Resource;
 
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 
 
     @Resource(name = "userService")
@@ -37,22 +33,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                 .authorizeRequests()
-                  .antMatchers("/css/**","/resources/", "/webjars/","/assets/","/js/**")
-                  .permitAll()
+                .authorizeRequests()
+                .antMatchers("/css/**", "/resources/", "/webjars/", "/assets/", "/js/**")
+                .permitAll()
                 .antMatchers("/").permitAll()
 
-                .antMatchers("/oauth/token").permitAll()
+                .antMatchers("/oauth/authorize").permitAll()
                 .and()
-                 .authorizeRequests()
+                .authorizeRequests()
                 .anyRequest().authenticated();
-                /*.and()
-                .formLogin().permitAll();*/
 
-
-                //.anyRequest()
-              // .fullyAuthenticated().and().formLogin();//.loginPage("/login")
-               //.failureUrl("/login?error").permitAll().and().logout().permitAll();
     }
    /* @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -65,12 +55,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void globalUserDetails(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(myUserDetailService);
-                //.passwordEncoder(encoder());
+        auth.userDetailsService(myUserDetailService)
+                  .passwordEncoder(encoder());
     }
 
     private BCryptPasswordEncoder encoder() {
+        System.out.println("BCryptPasswordEncoder");
         return new BCryptPasswordEncoder();
     }
+
 
 }
