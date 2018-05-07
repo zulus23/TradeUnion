@@ -41,7 +41,10 @@ requirejs.config(
     'jquery':
     {
       exports: ['jQuery', '$']
-    }
+    },
+      'maps': {
+          deps: ['jquery', 'i18n'],
+      }
   }
 }
 );

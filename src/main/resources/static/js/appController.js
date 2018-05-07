@@ -22,15 +22,14 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-el
          self.router = oj.Router.rootInstance;
          self.router.configure({
              'dashboard': {label: 'Dashboard', isDefault: true},
-             'incidents': {label: 'Incidents'},
-             'customers': {label: 'Customers'},
-             'about': {label: 'About'}
+             'employee': {label: 'Сотрудники',isDefault:false}
+
          });
          oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
 
          self.moduleConfig = ko.observable({'view': [], 'viewModel': null});
-        /* ko.computed(function () {
-             console.log("----")
+         ko.computed(function () {
+
              var name = self.router.moduleConfig.name();
              var viewPath = 'views/' + name + '.html';
              var modelPath = 'viewModels/' + name;
@@ -46,7 +45,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-el
                  }
              );
          });
-*/
+
          // Navigation setup
          var navData = [
              {
@@ -54,16 +53,8 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-el
                  iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-chart-icon-24'
              },
              {
-                 name: 'Incidents', id: 'incidents',
-                 iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-fire-icon-24'
-             },
-             {
-                 name: 'Customers', id: 'customers',
-                 iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-people-icon-24'
-             },
-             {
-                 name: 'About', id: 'about',
-                 iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-info-icon-24'
+                 name: 'Сотрудники', id: 'employee',
+                 iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 '
              }
          ];
          self.navDataSource = new oj.ArrayTableDataSource(navData, {idAttribute: 'id'});

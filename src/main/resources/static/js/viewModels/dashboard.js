@@ -6,47 +6,55 @@
 /*
  * Your dashboard ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery'],
+define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojfilmstrip', 'ojs/ojpagingcontrol'],
  function(oj, ko, $) {
   
-    function DashboardViewModel() {
+    var dashboardViewModel = function (moduleParams) {
       var self = this;
       // Below are a set of the ViewModel methods invoked by the oj-module component.
       // Please reference the oj-module jsDoc for additional information.
+        self.pagingModel = ko.observable(null);
+        self.chemicals = [
+            { name: 'Hydrogen' },
+            { name: 'Helium' },
+            { name: 'Lithium' },
+            { name: 'Beryllium' },
+            { name: 'Boron' },
+            { name: 'Carbon' }
+        ];
 
-      /**
-       * Optional ViewModel method invoked after the View is inserted into the
-       * document DOM.  The application can put logic that requires the DOM being
-       * attached here. 
-       * This method might be called multiple times - after the View is created 
-       * and inserted into the DOM and after the View is reconnected 
-       * after being disconnected.
-       */
-      self.connected = function() {
-        // Implement if needed
-      };
+        getItemInitialDisplay = function(index)
+        {
+            return index < 1 ? '' : 'none';
+        };
 
-      /**
-       * Optional ViewModel method invoked after the View is disconnected from the DOM.
-       */
-      self.disconnected = function() {
-        // Implement if needed
-      };
+        /*self.handleBindingsApplied = function()
+        {
+            console.log("=====--------");
+            var filmStrip = document.getElementById('filmStrip');
+            var busyContext = oj.Context.getContext(filmStrip).getBusyContext();
+            busyContext.whenReady().then(function ()
+            {
+                // Set the Paging Control pagingModel
+                console.log("=====");
+                self.pagingModel(filmStrip.getPagingModel());
+            });
+        };*/
+        self.connected = function () {
+            var filmStrip = document.getElementById('filmStrip');
+            var busyContext = oj.Context.getContext(filmStrip).getBusyContext();
+            busyContext.whenReady().then(function ()
+            {
+                // Set the Paging Control pagingModel
 
-      /**
-       * Optional ViewModel method invoked after transition to the new View is complete.
-       * That includes any possible animation between the old and the new View.
-       */
-      self.transitionCompleted = function() {
-        // Implement if needed
-      };
+                self.pagingModel(filmStrip.getPagingModel());
+            });
+        }
+
+
     }
 
-    /*
-     * Returns a constructor for the ViewModel so that the ViewModel is constructed
-     * each time the view is displayed.  Return an instance of the ViewModel if
-     * only one instance of the ViewModel is needed.
-     */
-    return new DashboardViewModel();
+
+    return dashboardViewModel;
   }
 );
