@@ -9,10 +9,9 @@
 define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojfilmstrip', 'ojs/ojpagingcontrol'],
  function(oj, ko, $) {
   
-    var dashboardViewModel = function (moduleParams) {
+    function DashboardViewModel(){
       var self = this;
-      // Below are a set of the ViewModel methods invoked by the oj-module component.
-      // Please reference the oj-module jsDoc for additional information.
+        // Please reference the oj-module jsDoc for additional information.
         self.pagingModel = ko.observable(null);
         self.chemicals = [
             { name: 'Hydrogen' },
@@ -40,7 +39,11 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojfilmstrip', 'ojs/ojpagingcontr
                 self.pagingModel(filmStrip.getPagingModel());
             });
         };*/
-        self.connected = function () {
+
+        // Below are a set of the ViewModel methods invoked by the oj-module component.
+        self.handleBindingsApplied  = function(info) {
+            // Implement if needed
+            console.log("handleBindingsApplied ")
             var filmStrip = document.getElementById('filmStrip');
             var busyContext = oj.Context.getContext(filmStrip).getBusyContext();
             busyContext.whenReady().then(function ()
@@ -51,10 +54,9 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojfilmstrip', 'ojs/ojpagingcontr
             });
         }
 
-
     }
 
 
-    return dashboardViewModel;
+    return new DashboardViewModel();
   }
 );

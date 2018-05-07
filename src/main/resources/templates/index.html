@@ -66,9 +66,12 @@
                 </oj-navigation-list>
             </div>
         </header>
-        <oj-module role="main" class="oj-web-applayout-max-width oj-web-applayout-content" config="[[moduleConfig]]">
-
-        </oj-module>
+        <div class="oj-web-applayout-content oj-web-applayout-max-width">
+            <div class="oj-flex oj-flex-items-pad">
+                <div class="oj-flex-item" id="content" role="main" data-bind="ojModule: router.moduleConfig">
+                </div>
+            </div>
+        </div>
 
 
     </div>

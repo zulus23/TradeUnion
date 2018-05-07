@@ -69,6 +69,7 @@ public class ProductDbConfig {
         factoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         Properties jpaProperties = new Properties();
        // jpaProperties.put("hibernate.show-sql", env.getProperty("hibernate.show-sql"));
+       // jpaProperties.put("hibernate.dialect", "SQLServer2008Dialect");
         jpaProperties.put("hibernate.show-sql", true);
         factoryBean.setJpaProperties(jpaProperties);
 

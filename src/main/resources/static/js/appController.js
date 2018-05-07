@@ -6,8 +6,8 @@
 /*
  * Your application specific code will go here
  */
-define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-element', 'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarraytabledatasource',
-  'ojs/ojoffcanvas'],
+define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils',
+        'ojs/ojrouter', 'ojs/ojknockout', 'ojs/ojarraytabledatasource',  'ojs/ojoffcanvas'],
   function(oj, ko, moduleUtils) {
      function ControllerViewModel() {
          var self = this;
@@ -22,7 +22,10 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-el
          self.router = oj.Router.rootInstance;
          self.router.configure({
              'dashboard': {label: 'Dashboard', isDefault: true},
-             'employee': {label: 'Сотрудники',isDefault:false}
+             'employee': {label: 'Сотрудники',isDefault:false,
+                          canEnter: function () {
+                              return false;
+                          }}
 
          });
          oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
@@ -54,7 +57,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils', 'ojs/ojmodule-el
              },
              {
                  name: 'Сотрудники', id: 'employee',
-                 iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 '
+                 iconClass: 'oj-navigationlist-item-icon demo-icon-font-24 demo-people-icon-24 '
              }
          ];
          self.navDataSource = new oj.ArrayTableDataSource(navData, {idAttribute: 'id'});
