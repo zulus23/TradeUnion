@@ -32,7 +32,7 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils',
 
          self.moduleConfig = ko.observable({'view': [], 'viewModel': null});
          ko.computed(function () {
-
+             console.log("first computed");
              var name = self.router.moduleConfig.name();
              var viewPath = 'views/' + name + '.html';
              var modelPath = 'viewModels/' + name;
