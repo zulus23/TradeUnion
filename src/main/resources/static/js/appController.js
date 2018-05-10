@@ -24,8 +24,10 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils',
              'dashboard': {label: 'Dashboard', isDefault: true},
              'employee': {label: 'Сотрудники',isDefault:false,
                           canEnter: function () {
-                              return false;
-                          }}
+                              return self.isAuthenticated();
+                          }},
+             'login' : {label:'Вход'}
+
 
          });
          oj.Router.defaults['urlAdapter'] = new oj.Router.urlParamAdapter();
@@ -85,9 +87,19 @@ define(['ojs/ojcore', 'knockout', 'ojs/ojmodule-element-utils',
          // Application Name used in Branding Area
          self.appName = ko.observable("App Name");
          // User Info used in Global Navigation area
-         self.userLogin = ko.observable("john.hancock@oracle.com");
+         self.userLogin = ko.observable("");
+
+         self.isAuthenticated = ko.observable(false);
+
+         self.buttonClick = function(event){
+
+             console.log(self.isAuthenticated());
+             self.isAuthenticated(!!self.isAuthenticated);
+             console.log(self.isAuthenticated());
 
 
+             self.router.go('login');
+         }
      }
 
      return new ControllerViewModel();
