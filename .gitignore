@@ -2,9 +2,8 @@
 !.mvn/wrapper/maven-wrapper.jar
 
 ### Project ###
-/src/main/resources/static/js/libs/
-/src/main/resources/static/scss/oj/v5.0.0/
-/src/main/resources/static/css/libs/oj/v5.0.0/
+/tradeunion-web/src/main/resources/static/js/libs/
+/tradeunion-web/src/main/resources/static/css/libs/oj/v5.0.0/
 
 ### STS ###
 .apt_generated
@@ -28,6 +27,7 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+
 
 
 

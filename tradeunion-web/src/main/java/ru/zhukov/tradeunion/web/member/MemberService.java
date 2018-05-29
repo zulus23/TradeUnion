@@ -1,4 +1,4 @@
-package ru.zhukov.tradeunion.member;
+package ru.zhukov.tradeunion.web.member;
 
 import java.util.List;
 import java.util.Optional;

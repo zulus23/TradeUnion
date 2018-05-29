@@ -1,4 +1,4 @@
-package ru.zhukov.tradeunion.member;
+package ru.zhukov.tradeunion.web.member;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

@@ -1,4 +1,4 @@
-package ru.zhukov.tradeunion.member;
+package ru.zhukov.tradeunion.web.member;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
